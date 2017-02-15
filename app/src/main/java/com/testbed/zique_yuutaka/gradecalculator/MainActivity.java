@@ -1,5 +1,6 @@
 package com.testbed.zique_yuutaka.gradecalculator;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -65,8 +66,11 @@ public class MainActivity extends AppCompatActivity {
                     //Calculate grades from the text field values
                     String strGrade = Calculator.getLetterGrade(scores);
 
-                    //display as a Toast
-                    Toast.makeText(getBaseContext(), "Grade: " + strGrade, Toast.LENGTH_LONG).show();
+                    Intent gradeDisplayIntent = GradeDisplayActivity.newIntent(MainActivity.this, strGrade);
+
+                    startActivity(gradeDisplayIntent);
+
+                    clearEntries();
                 }
                 else{
                     Log.d(DEBUG, "Incorrect Entries");
